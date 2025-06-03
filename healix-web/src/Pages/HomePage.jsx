@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Ellipse from '../assets/Ellipse.png'; // Circular frame
 import teamPhoto from '../assets/unsplash.png'; // Team photo for "Who We Are" section
+import HomePageTwo from './HomePageTwo';
+import HomePageThree from './HomePageThree';
+import HomePageFour from './HomePageFour';
 
 
 // IMPORTANT: Replace this placeholder URL with the actual path to your doctors image!
@@ -17,7 +20,7 @@ const HomePageContainer = styled.section`
   align-items: center;
   padding: 40px 20px;
   min-height: calc(100vh - 100px); /* Adjust based on header/footer height */
-  background: linear-gradient(to right,rgba(229, 167, 225, 0.35),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
+  background: linear-gradient(to right,rgba(229, 167, 225, 0.29),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
   position: relative;
   overflow: hidden;
 
@@ -405,6 +408,9 @@ const HomePage = () => {
               </TextContent>
           </ContentBlock>
       </WhoWeAreSectionContainer>
+      <HomePageTwo />
+      <HomePageThree />
+      <HomePageFour />
     </>
   );
 };

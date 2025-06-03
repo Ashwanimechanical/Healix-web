@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Component/Header'; 
 import Footer from './Component/Footer';
 import styled from 'styled-components'; 
-import HomePage from './Pages/HomePage'; // Make sure this exists and is correctly exported
+import HomePage from './Pages/HomePage'; 
+import HomePageTwo from './Pages/HomePageTwo';
+import HomePageThree from './Pages/HomePageThree';
+import HomePageFour from './Pages/HomePageFour';
 
 const AppWrapper = styled.div`
     display: flex;
@@ -23,7 +26,9 @@ function App() {
                 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    {/* Add other routes if needed */}
+                    <Route path='homepagetwo' element={<HomePageTwo />} />
+                    <Route path='homepagethree' element={<HomePageThree />} />
+                     <Route path='homepagefour' element={<HomePageFour />} />
                 </Routes>
 
                 <Footer />
