@@ -5,6 +5,7 @@ import teamPhoto from '../assets/unsplash.png'; // Team photo for "Who We Are" s
 import HomePageTwo from './HomePageTwo';
 import HomePageThree from './HomePageThree';
 import HomePageFour from './HomePageFour';
+import HomePageFive from './HomePageFive';
 
 
 // IMPORTANT: Replace this placeholder URL with the actual path to your doctors image!
@@ -411,6 +412,7 @@ const HomePage = () => {
       <HomePageTwo />
       <HomePageThree />
       <HomePageFour />
+      <HomePageFive />
     </>
   );
 };

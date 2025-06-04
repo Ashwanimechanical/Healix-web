@@ -7,6 +7,7 @@ import HomePage from './Pages/HomePage';
 import HomePageTwo from './Pages/HomePageTwo';
 import HomePageThree from './Pages/HomePageThree';
 import HomePageFour from './Pages/HomePageFour';
+import HomePageFive from './Pages/HomePageFive';
 
 const AppWrapper = styled.div`
     display: flex;
@@ -29,6 +30,7 @@ function App() {
                     <Route path='homepagetwo' element={<HomePageTwo />} />
                     <Route path='homepagethree' element={<HomePageThree />} />
                      <Route path='homepagefour' element={<HomePageFour />} />
+                      <Route path='homepagefive' element={<HomePageFive />} />
                 </Routes>
 
                 <Footer />
