@@ -8,10 +8,9 @@ const NavbarContainer = styled.div`
   width: 100%; /* Ensures the container takes full width */
   background-color: #fff; /* Moved background color here for full-width header bar */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Moved shadow here for full-width header bar */
-   /* Keep header sticky on scroll */
+  position: sticky; /* Keep header sticky on scroll */
   top: 0;
   z-index: 1000; /* Ensure header is above other content */
-  
 `;
 
 // --- Header Content Container ---
@@ -20,15 +19,10 @@ const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px; /* NEW: Set a maximum width for the header's content */
-    margin: 0 auto;     /* NEW: Center the content horizontally within NavbarContainer */
+    max-width: 1400px; /* Set a maximum width for the header's content, consistent with HomePage's MainContainer */
+    margin: 0 auto;     /* Center the content horizontally within NavbarContainer */
     padding: 20px 40px; /* Keep padding for content spacing relative to its own edges */
     flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    
-
-    /* Remove background-color and box-shadow from here as they are now on NavbarContainer */
-    /* background-color: #fff; */
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
 
     @media (max-width: 1440px) { /* Adjust padding for screens just slightly larger than max-width */
         padding: 20px 40px; /* Maintain desktop padding up to this size */

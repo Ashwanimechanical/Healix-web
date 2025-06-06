@@ -1,16 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Inner container for the footer content to apply max-width and horizontal padding
-const FooterContentWrapper = styled.div`
-    max-width: 1400px; /* Match the max-width of your main content sections and header */
-    margin: 0 auto; /* Center the content within the full-width footer */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Ensure it takes full width of its parent (FooterContainer) */
+// --- NEW: Outer Wrapper for the entire footer component ---
+// This wrapper will provide the full-width dark background for the footer.
+const FooterOuterWrapper = styled.div`
+    width: 100%; /* Ensures the background spans the full width of the viewport */
+    background-color: #333; /* Dark background color for the entire footer bar */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    /* Add vertical padding here for the entire footer bar */
+    padding-top: 20px;
+    padding-bottom: 20px;
+`;
 
-    /* IMPORTANT: Apply ALL horizontal padding here! */
+// Styled component for the main footer content container
+// This now contains the actual content (copyright, social icons) and constrains its width.
+const FooterContainer = styled.footer`
+    display: flex;
+    justify-content: space-between; /* Space between copyright and social icons */
+    align-items: center;
+    max-width: 1400px; /* NEW: Match the max-width of your main content and header */
+    margin: 0 auto;     /* NEW: Center the content horizontally within FooterOuterWrapper */
+    color: #fff; /* White text color for contrast */
+    font-size: 14px;
+    width: 100%; /* Ensure it takes full width of its parent (FooterOuterWrapper's content area) */
+
+    /* Apply horizontal padding here, consistent with other sections */
     padding-left: 40px;
     padding-right: 40px;
 
@@ -23,25 +37,10 @@ const FooterContentWrapper = styled.div`
     }
 `;
 
-// Styled component for the main footer container
-const FooterContainer = styled.footer`
-    display: flex;
-    justify-content: center; /* Center the FooterContentWrapper horizontally */
-    align-items: center; /* Center the FooterContentWrapper vertically */
+// The previous FooterContentWrapper is no longer needed as its properties are
+// merged into FooterContainer and FooterOuterWrapper.
+// const FooterContentWrapper = styled.div`...`;
 
-    /* Keep vertical padding here to control the footer's overall height */
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    background-color: #333; /* Dark background color as seen in the image */
-    color: #fff; /* White text color for contrast */
-    font-size: 14px;
-
-    width: 100%; /* Ensure the background spans the full width of the viewport */
-    box-sizing: border-box; /* Include padding in the width calculation */
-    /* IMPORTANT: Remove any horizontal padding from here! */
-    /* padding: 20px 0; or padding: 20px; will work if you omit the horizontal values */
-`;
 
 // Styled component for the copyright text
 const CopyrightText = styled.span`
@@ -87,8 +86,8 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <FooterContainer>
-            <FooterContentWrapper>
+        <FooterOuterWrapper> {/* NEW: Provides the full-width dark background */}
+            <FooterContainer> {/* This now constrains and centers the footer content */}
                 <CopyrightText>
                     &copy; {currentYear} Anima's Landing Page Ui Kit.
                 </CopyrightText>
@@ -114,8 +113,8 @@ const Footer = () => {
                         </svg>
                     </SocialIconLink>
                 </SocialIcons>
-            </FooterContentWrapper>
-        </FooterContainer>
+            </FooterContainer>
+        </FooterOuterWrapper>
     );
 };
 
