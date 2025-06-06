@@ -2,17 +2,39 @@ import styled from 'styled-components';
 import React from 'react';
 import healix_logo from '../assets/healix_logo.svg';
 
+// --- Navbar Container ---
+// This container provides the full-width background and shadow for the header.
+const NavbarContainer = styled.div`
+  width: 100%; /* Ensures the container takes full width */
+  background-color: #fff; /* Moved background color here for full-width header bar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Moved shadow here for full-width header bar */
+   /* Keep header sticky on scroll */
+  top: 0;
+  z-index: 1000; /* Ensure header is above other content */
+  
+`;
+
+// --- Header Content Container ---
+// This container now holds the actual content (logo, nav links) and constrains its width.
 const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 1400px; /* NEW: Set a maximum width for the header's content */
+    margin: 0 auto;     /* NEW: Center the content horizontally within NavbarContainer */
+    padding: 20px 40px; /* Keep padding for content spacing relative to its own edges */
     flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    
+
+    /* Remove background-color and box-shadow from here as they are now on NavbarContainer */
+    /* background-color: #fff; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
+
+    @media (max-width: 1440px) { /* Adjust padding for screens just slightly larger than max-width */
+        padding: 20px 40px; /* Maintain desktop padding up to this size */
+    }
 
     @media (max-width: 768px) {
-       
         padding: 15px 20px; /* Adjust padding for mobile */
         gap: 15px; /* Space between stacked items */
     }
@@ -32,11 +54,7 @@ const NavLinks = styled.nav`
     gap: 30px; /* Space between nav items */
 
     @media (max-width: 768px) {
-        
         gap: 15px; /* Space between stacked links/buttons */
-        
-        /* On mobile, we only want NavLink to show, so NavLinks might not need to be a column directly */
-        /* We'll handle hiding specific elements below */
     }
 `;
 
@@ -113,18 +131,20 @@ const Icon = styled.span`
 
 const Header = () => {
     return (
-        <HeaderContainer>
-            <Logo src={healix_logo} alt="Healix Logo" />
-            <NavLinks>
-                <NavLink href="#">Contact</NavLink>
-                {/* These buttons will be hidden on mobile due to their styled components */}
-                <SecondaryButton>How it works</SecondaryButton>
-                <PrimaryButton>
-                    <Icon>⚡</Icon> {/* Replace with your actual icon, e.g., <FaBolt /> if using react-icons */}
-                    Get Started
-                </PrimaryButton>
-            </NavLinks>
-        </HeaderContainer>
+        <NavbarContainer> {/* Provides full-width background and shadow */}
+            <HeaderContainer> {/* Constrains and centers the header content */}
+                <Logo src={healix_logo} alt="Healix Logo" />
+                <NavLinks>
+                    <NavLink href="#">Contact</NavLink>
+                    {/* These buttons will be hidden on mobile due to their styled components */}
+                    <SecondaryButton>How it works</SecondaryButton>
+                    <PrimaryButton>
+                        <Icon>⚡</Icon> {/* Replace with your actual icon, e.g., <FaBolt /> if using react-icons */}
+                        Get Started
+                    </PrimaryButton>
+                </NavLinks>
+            </HeaderContainer>
+        </NavbarContainer>
     );
 }
 

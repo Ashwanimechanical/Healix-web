@@ -15,12 +15,21 @@ const doctorsImage = "https://placehold.co/400x400/cccccc/333333?text=Doctors+Im
 
 // === Styled Components for Hero Section ===
 
+const MainContainer = styled.div`
+  max-width: 1400px; /* Adjust this value as needed to control content width */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 0 2px; /* Add some horizontal padding to prevent content from touching edges on smaller screens */
+
+  @media (max-width: 768px) {
+    padding: 0 5px; /* Slightly less padding on smaller screens */
+  }
+`;
+
 const HomePageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  min-height: calc(100vh - 100px); /* Adjust based on header/footer height */
   background: linear-gradient(to right,rgba(229, 167, 225, 0.29),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
   position: relative;
   overflow: hidden;
@@ -243,7 +252,7 @@ const SectionSubheading = styled.p`
         margin-bottom: 40px;
     }
     @media (min-width: 768px) {
-        text-align: right; 
+        text-align: right;
         margin-right: 380px;
     }
 `;
@@ -340,7 +349,7 @@ const SectionPrimaryButton = styled(PrimaryButton)`
 
 const HomePage = () => {
   return (
-    <> {/* Use a React Fragment to render multiple top-level sections */}
+    <MainContainer> {/* Wrap all content in MainContainer */}
       <HomePageContainer>
         <ContentWrapper>
           <Heading>
@@ -364,7 +373,7 @@ const HomePage = () => {
         <ImageWrapper>
           <EllipseImage src={Ellipse} alt="Decorative Ellipse" />
           {/* Doctors Image is now uncommented and using the placeholder */}
-         
+          {/* <DoctorsImage src={doctorsImage} alt="Doctors" /> Added doctorsImage */}
           <DecorativeCircle />
           <Star size={20} bottom="10%" left="15%" />
           <Star size={15} top="15%" right="-2%" />
@@ -413,7 +422,7 @@ const HomePage = () => {
       <HomePageThree />
       <HomePageFour />
       <HomePageFive />
-    </>
+    </MainContainer>
   );
 };
 
