@@ -1,9 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './Component/Header'; 
+import styled from 'styled-components';
+
+// Import your components
+import Header from './Component/Header';
 import Footer from './Component/Footer';
-import styled from 'styled-components'; 
-import HomePage from './Pages/HomePage'; 
+
+// Import your page components
+import HomePage from './Pages/HomePage';
 import HomePageTwo from './Pages/HomePageTwo';
 import HomePageThree from './Pages/HomePageThree';
 import HomePageFour from './Pages/HomePageFour';
@@ -13,24 +17,25 @@ const AppWrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    width: 100vw; /* <-- Changed to 100vw to take full viewport width */
+    margin: 0; /* Ensuring no external margin for AppWrapper */
+    padding: 0; /* Ensuring no external padding for AppWrapper */
+    box-sizing: border-box; /* Ensures padding/border are included in the width */
+    overflow-x: hidden; /* <-- Crucial to prevent horizontal scroll if 100vw causes it */
 `;
 
 function App() {
     return (
-        <Router> 
+        <Router>
             <AppWrapper>
-                <Header /> 
-                
+                <Header />
+
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path='homepagetwo' element={<HomePageTwo />} />
                     <Route path='homepagethree' element={<HomePageThree />} />
-                     <Route path='homepagefour' element={<HomePageFour />} />
-                      <Route path='homepagefive' element={<HomePageFive />} />
+                    <Route path='homepagefour' element={<HomePageFour />} />
+                    <Route path='homepagefive' element={<HomePageFive />} />
                 </Routes>
 
                 <Footer />

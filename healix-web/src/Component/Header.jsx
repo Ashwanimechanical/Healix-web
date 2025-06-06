@@ -1,54 +1,61 @@
 import styled from 'styled-components';
 import React from 'react';
-import healix_logo from '../assets/healix_logo.svg';
+import healix_logo from '../assets/healix_logo.svg'; // Assuming this is now just the icon
 
-// --- Navbar Container ---
-// This container provides the full-width background and shadow for the header.
-const NavbarContainer = styled.div`
-  width: 100%; /* Ensures the container takes full width */
-  background-color: #fff; /* Moved background color here for full-width header bar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Moved shadow here for full-width header bar */
-  position: sticky; /* Keep header sticky on scroll */
-  top: 0;
-  z-index: 1000; /* Ensure header is above other content */
+// New Container to prevent damage on zoom and control overall layout
+const PageWrapper = styled.div`
+    width: 100%; /* Take full width of its parent */
+    max-width: 1400px; /* Adjust this max-width as per your overall page layout */
+    margin: 0 auto; /* Center the wrapper on the page */
+    box-sizing: border-box; /* Ensures padding doesn't add to the total width */
 `;
 
-// --- Header Content Container ---
-// This container now holds the actual content (logo, nav links) and constrains its width.
 const HeaderContainer = styled.header`
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px; /* Set a maximum width for the header's content, consistent with HomePage's MainContainer */
-    margin: 0 auto;     /* Center the content horizontally within NavbarContainer */
-    padding: 20px 40px; /* Keep padding for content spacing relative to its own edges */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-
-    @media (max-width: 1440px) { /* Adjust padding for screens just slightly larger than max-width */
-        padding: 20px 40px; /* Maintain desktop padding up to this size */
-    }
+    justify-content: space-between; /* Pushes logo to left, buttons to right */
+    align-items: center; /* Vertically centers items */
+    padding: 20px 40px; /* Apply padding here to control spacing from edges */
+    background-color: #fff; /* Assuming a white background based on the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow for header */
+    box-sizing: border-box; /* Ensures padding doesn't add to the total width */
 
     @media (max-width: 768px) {
-        padding: 15px 20px; /* Adjust padding for mobile */
-        gap: 15px; /* Space between stacked items */
+        padding: 15px 20px; /* Reduce padding on smaller screens */
+    }
+
+    @media (max-width: 480px) {
+        /* On very small screens, only logo and contact button will be visible */
+        justify-content: space-between; /* Keep content spaced out */
+        padding: 15px 15px; /* Adjust padding for mobile */
     }
 `;
 
 const Logo = styled.img`
     height: 40px; /* Adjust logo size as needed */
+    flex-shrink: 0; /* Prevent logo from shrinking */
 
     @media (max-width: 768px) {
-        height: 35px; /* Slightly smaller logo on mobile */
+        height: 35px; /* Slightly smaller logo on tablets */
+    }
+
+    @media (max-width: 480px) {
+        height: 30px; /* Even smaller logo on mobile */
     }
 `;
 
 const NavLinks = styled.nav`
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically centers items within NavLinks */
     gap: 30px; /* Space between nav items */
 
     @media (max-width: 768px) {
-        gap: 15px; /* Space between stacked links/buttons */
+        gap: 20px; /* Reduce space between nav items on smaller screens */
+    }
+
+    @media (max-width: 480px) {
+        /* On mobile, we only want the Contact link to be visible */
+        gap: 0; /* No gap needed as only one item will be visible */
     }
 `;
 
@@ -57,12 +64,20 @@ const NavLink = styled.a`
     color: #333; /* Darker text color */
     font-size: 16px;
     font-weight: 500;
+    white-space: nowrap; /* Prevent text wrapping */
+
     &:hover {
         color: #007bff; /* Example hover color */
     }
 
     @media (max-width: 768px) {
-        font-size: 15px; /* Slightly smaller font on mobile */
+        font-size: 15px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+        padding: 0; /* Remove padding */
+        display: block; /* Ensure it's always visible on mobile */
     }
 `;
 
@@ -74,17 +89,18 @@ const Button = styled.button`
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: auto; /* Default width */
+    white-space: nowrap; /* Prevent text wrapping */
 
     &:hover {
         opacity: 0.9;
     }
 
     @media (max-width: 768px) {
-        width: 80%; /* Make buttons wider on mobile for easier tapping */
-        max-width: 250px; /* Limit max width for very large phones */
-        padding: 10px 20px; /* Slightly less padding */
-        font-size: 15px; /* Smaller font */
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    @media (max-width: 480px) {
         display: none; /* Hide buttons on mobile */
     }
 `;
@@ -92,53 +108,47 @@ const Button = styled.button`
 const PrimaryButton = styled(Button)`
     background-color: #222; /* Dark button background */
     color: #fff; /* White text for dark button */
-    display: flex;
-    justify-content: center; /* Center content within button on mobile */
+    display: flex; /* Keep flex for icon alignment on larger screens */
     align-items: center;
+    justify-content: center;
     gap: 8px; /* Space for icon if needed */
 
-    @media (max-width: 768px) {
-        display: none; /* Explicitly hide on mobile */
+    @media (max-width: 480px) {
+       display: none; /* Explicitly hide on mobile */
     }
 `;
 
 const SecondaryButton = styled(Button)`
     background-color: #f0f0f0; /* Light button background */
     color: #333; /* Dark text for light button */
-    display: flex;
-    justify-content: center; /* Center content within button on mobile */
-    align-items: center;
 
-    @media (max-width: 768px) {
-        display: none; /* Explicitly hide on mobile */
+    @media (max-width: 480px) {
+       display: none; /* Explicitly hide on mobile */
     }
 `;
 
 const Icon = styled.span`
     /* Style for the icon inside the "Get Started" button */
     font-size: 18px; /* Adjust icon size */
-
-    @media (max-width: 768px) {
-        font-size: 16px; /* Slightly smaller icon on mobile */
-    }
 `;
 
 const Header = () => {
     return (
-        <NavbarContainer> {/* Provides full-width background and shadow */}
-            <HeaderContainer> {/* Constrains and centers the header content */}
-                <Logo src={healix_logo} alt="Healix Logo" />
+        <PageWrapper>
+            <HeaderContainer>
+                {/* Assuming healix_logo.svg now only contains the icon */}
+                <Logo src={healix_logo} alt="Healix Logo Icon" />
                 <NavLinks>
                     <NavLink href="#">Contact</NavLink>
-                    {/* These buttons will be hidden on mobile due to their styled components */}
+                    {/* These buttons will be hidden on mobile via CSS */}
                     <SecondaryButton>How it works</SecondaryButton>
                     <PrimaryButton>
-                        <Icon>⚡</Icon> {/* Replace with your actual icon, e.g., <FaBolt /> if using react-icons */}
+                        <Icon>⚡</Icon> {/* Replace with your actual icon */}
                         Get Started
                     </PrimaryButton>
                 </NavLinks>
             </HeaderContainer>
-        </NavbarContainer>
+        </PageWrapper>
     );
 }
 

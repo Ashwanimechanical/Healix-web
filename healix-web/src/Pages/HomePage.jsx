@@ -18,10 +18,10 @@ const doctorsImage = "https://placehold.co/400x400/cccccc/333333?text=Doctors+Im
 const MainContainer = styled.div`
   max-width: 1400px; /* Adjust this value as needed to control content width */
   margin: 0 auto; /* Centers the container horizontally */
-  padding: 0 2px; /* Add some horizontal padding to prevent content from touching edges on smaller screens */
+  padding: 0 px; /* Add some horizontal padding to prevent content from touching edges on smaller screens */
 
   @media (max-width: 768px) {
-    padding: 0 5px; /* Slightly less padding on smaller screens */
+    padding: 0 px; /* Slightly less padding on smaller screens */
   }
 `;
 
