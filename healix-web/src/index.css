@@ -87,3 +87,8 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+body, #root {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

@@ -7,13 +7,13 @@ import HomePageThree from './HomePageThree';
 import HomePageFour from './HomePageFour';
 import HomePageFive from './HomePageFive';
 
-
-// IMPORTANT: Replace this placeholder URL with the actual path to your doctors image!
-// Example: import doctorsActualImage from '../assets/your-doctors-doctors-image.jpg';
-const doctorsImage = "https://placehold.co/400x400/cccccc/333333?text=Doctors+Image"; // Placeholder for the doctors image
-
-
 // === Styled Components for Hero Section ===
+
+const AppWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 
 const MainContainer = styled.div`
   max-width: 1400px; /* This controls the overall maximum width of your page content */
@@ -360,6 +360,7 @@ const SectionPrimaryButton = styled(PrimaryButton)`
 
 const HomePage = () => {
   return (
+    <AppWrapper>
     <MainContainer> {/* This MainContainer wraps ALL your main page content */}
       <HomePageContainer>
         <ContentWrapper>
@@ -435,6 +436,7 @@ const HomePage = () => {
       <HomePageFour />
       <HomePageFive />
     </MainContainer>
+    </AppWrapper>
   );
 };
 
