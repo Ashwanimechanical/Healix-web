@@ -16,40 +16,52 @@ const doctorsImage = "https://placehold.co/400x400/cccccc/333333?text=Doctors+Im
 // === Styled Components for Hero Section ===
 
 const MainContainer = styled.div`
-  max-width: 1200px; /* Adjust this value as needed to control content width */
-  margin: 0 auto; /* Centers the container horizontally */
-  padding: 0 px; /* Add some horizontal padding to prevent content from touching edges on smaller screens */
-
-  @media (max-width: 768px) {
-    padding: 0 px; /* Slightly less padding on smaller screens */
-  }
+  max-width: 1400px; /* This controls the overall maximum width of your page content */
+  margin: 0 auto; /* Centers the entire page content horizontally */
+  padding: 0; /* Important: MainContainer itself has NO horizontal padding, its children will */
+  box-sizing: border-box; /* Ensures padding is included in the total width if applied elsewhere */
 `;
 
 const HomePageContainer = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
+  align-items: center; /* Centers content horizontally within this section for mobile */
+  padding: 40px 20px; /* Horizontal padding re-applied directly to this section for mobile */
   background: linear-gradient(to right,rgba(229, 167, 225, 0.29),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Ensures any overflowing decorative elements within this container are clipped */
+  width: 100%; /* Ensures this section takes full width of its parent (MainContainer) */
+  box-sizing: border-box; /* Ensures padding is included in the total width */
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 60px 80px;
+    flex-direction: row; /* Layout as row on desktop */
+    justify-content: space-between; /* Pushes content wrappers to edges */
+    padding: 60px 80px; /* Horizontal padding re-applied directly to this section for desktop */
+  }
+
+  @media (max-width: 1024px) { /* Adjust breakpoint for larger tablets/laptops */
+    padding: 60px 50px; /* Adjusted padding for larger tablets/laptops */
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 20px; /* Adjusted padding for very small screens (mobile) */
+    
   }
 `;
 
 const ContentWrapper = styled.div`
-  flex: 1;
-  max-width: 600px;
+  flex: 1; /* Allows this content block to grow and shrink */
+  max-width: 600px; /* Keep a max-width for readability of text */
   text-align: center; /* Center text on mobile */
   z-index: 2; /* Ensure content is above decorative elements */
 
   @media (min-width: 768px) {
     text-align: left; /* Align text left on desktop */
-    margin-right: 40px;
+    margin-right: 40px; /* Provides a gap between text and image on desktop */
+  }
+
+  @media (min-width: 1024px) { /* Adjust max-width for larger screens if needed */
+    max-width: 50%; /* Allow it to take up to 50% of parent's width */
   }
 `;
 
@@ -118,9 +130,9 @@ const Icon = styled.span`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 1;
+  flex: 1; /* Allows this image block to grow and shrink */
   position: relative;
-  max-width: 500px;
+  max-width: 500px; /* Keep a max-width for the image container */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -130,11 +142,15 @@ const ImageWrapper = styled.div`
   @media (min-width: 768px) {
     margin-top: 0; /* Remove margin on desktop */
   }
+
+  @media (min-width: 1024px) { /* Adjust max-width for larger screens if needed */
+    max-width: 50%; /* Allow it to take up to 50% of parent's width */
+  }
 `;
 
 const EllipseImage = styled.img`
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Max width for the ellipse itself */
   z-index: 1;
 `;
 
@@ -203,14 +219,24 @@ const Star = styled.div`
 const WhoWeAreSectionContainer = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 80px 40px; /* Ample padding for the section */
+    align-items: center; /* Centers all direct children horizontally */
+    padding: 80px 80px; /* Horizontal padding re-applied directly to this section for desktop */
     background-color: #fff; /* White background as per the image */
-    text-align: center; /* Default center text on mobile */
+    text-align: center; /* Default center text for headings on mobile */
+    width: 100%; /* Ensures this section takes full width of its parent (MainContainer) */
+    box-sizing: border-box; /* Ensures padding is included in the total width */
+
+
+    @media (max-width: 1024px) {
+        padding: 80px 50px;
+    }
 
     @media (min-width: 768px) {
-        text-align: left; /* Align text left on desktop */
-        padding: 100px 80px;
+        padding: 100px 30px; /* Adjusted padding for smaller screens (tablet) */
+    }
+
+    @media (max-width: 480px) {
+        padding: 80px 20px; /* Adjusted padding for very small screens (mobile) */
     }
 `;
 
@@ -219,22 +245,11 @@ const SectionHeading = styled.h2`
     font-weight: 700;
     color: #000000;
     margin-bottom: 0px;
-    /* Removed fixed margin-left for responsiveness */
-    /* margin-left: 360px; */
-    text-align: center; /* Center on mobile */
-    width: 100%; /* Take full width to allow centering */
+    text-align: center; /* Center on mobile and desktop */
+    width: 100%; /* Take full width to allow proper centering */
 
     @media (max-width: 768px) {
         font-size: 32px;
-    }
-    @media (min-width: 768px) {
-        text-align: right; /* Align right on desktop */
-        margin-right: 720px;
-
-        /* To simulate the previous margin-left, you could use a max-width and margin: 0 auto for the parent,
-           or adjust text-align as done here. For a multi-column layout on desktop,
-           the text-align: left on the section itself, combined with the ContentBlock's layout,
-           will naturally align it. */
     }
 `;
 
@@ -242,18 +257,12 @@ const SectionSubheading = styled.p`
     font-size: 18px;
     color: #666;
     margin-bottom: 30px;
-    /* Removed fixed margin-left for responsiveness */
-    /* margin-left: 540px; */
-    text-align: center; /* Center on mobile */
-    width: 100%; /* Take full width to allow centering */
+    text-align: center; /* Center on mobile and desktop */
+    width: 100%; /* Take full width to allow proper centering */
 
     @media (max-width: 768px) {
         font-size: 16px;
         margin-bottom: 40px;
-    }
-    @media (min-width: 768px) {
-        text-align: right;
-        margin-right: 380px;
     }
 `;
 
@@ -261,12 +270,14 @@ const ContentBlock = styled.div`
     display: flex;
     flex-direction: column; /* Stack vertically on mobile */
     gap: 40px; /* Space between image and text on mobile */
-    max-width: 1200px; /* Max width for the content block */
-    width: 100%;
+    max-width: 1200px; /* Max width for the content block (internal content max-width) */
+    width: 100%; /* Allows it to take full width up to max-width */
+    align-items: center; /* Center content within this block on mobile */
 
     @media (min-width: 768px) {
         flex-direction: row; /* Arrange horizontally on desktop */
         gap: 80px; /* Space between image and text on desktop */
+        align-items: flex-start; /* Align items to the top on desktop */
     }
 `;
 
@@ -349,7 +360,7 @@ const SectionPrimaryButton = styled(PrimaryButton)`
 
 const HomePage = () => {
   return (
-    <MainContainer> {/* Wrap all content in MainContainer */}
+    <MainContainer> {/* This MainContainer wraps ALL your main page content */}
       <HomePageContainer>
         <ContentWrapper>
           <Heading>
@@ -418,6 +429,7 @@ const HomePage = () => {
               </TextContent>
           </ContentBlock>
       </WhoWeAreSectionContainer>
+      {/* Other HomePage sections */}
       <HomePageTwo />
       <HomePageThree />
       <HomePageFour />
