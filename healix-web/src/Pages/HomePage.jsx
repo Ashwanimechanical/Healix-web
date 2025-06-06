@@ -16,7 +16,7 @@ const doctorsImage = "https://placehold.co/400x400/cccccc/333333?text=Doctors+Im
 // === Styled Components for Hero Section ===
 
 const MainContainer = styled.div`
-  max-width: 1400px; /* Adjust this value as needed to control content width */
+  max-width: 1200px; /* Adjust this value as needed to control content width */
   margin: 0 auto; /* Centers the container horizontally */
   padding: 0 px; /* Add some horizontal padding to prevent content from touching edges on smaller screens */
 

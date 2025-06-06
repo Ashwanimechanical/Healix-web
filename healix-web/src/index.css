@@ -19,7 +19,7 @@ body, html {
 
   color-scheme: light;
   color: rgb(255, 255, 255);
-  background-color: #242424;
+  background-color: #24242400;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -80,10 +80,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-/* In your global styles or index.css */
-html {
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+
