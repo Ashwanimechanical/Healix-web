@@ -22,6 +22,9 @@ const MainContainer = styled.div`
   box-sizing: border-box; 
   min-width: 500px;
   
+   @media (max-width: 480px) {
+   min-width: 500px;
+    padding: 0px 20px; /* Adjusted padding for very small screens (mobile) */
 `;
 
 const HomePageContainer = styled.section`
