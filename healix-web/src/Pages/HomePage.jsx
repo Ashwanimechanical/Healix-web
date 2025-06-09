@@ -56,7 +56,7 @@ const HomePageContainer = styled.section`
 
 const ContentWrapper = styled.div`
   flex: 1; /* Allows this content block to grow and shrink */
-  max-width: 600px; /* Keep a max-width for readability of text */
+  max-width: 400px; /* Keep a max-width for readability of text */
   text-align: center; /* Center text on mobile */
   z-index: 2; /* Ensure content is above decorative elements */
 
@@ -159,17 +159,7 @@ const EllipseImage = styled.img`
   z-index: 1;
 `;
 
-const DoctorsImage = styled.img`
-  position: absolute;
-  width: 70%;
-  max-width: 260px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2;
-`;
+
 
 const DecorativeCircle = styled.div`
   position: absolute;
