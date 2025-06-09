@@ -169,7 +169,17 @@ const EllipseImage = styled.img`
   z-index: 1;
 `;
 
-
+const DoctorsImage = styled.img`
+  position: absolute;
+  width: 70%;
+  max-width: 260px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+`;
 
 const DecorativeCircle = styled.div`
   position: absolute;

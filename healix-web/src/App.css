@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* padding: 2rem;
+  text-align: center; */
 }
 
 .logo {
@@ -40,20 +40,5 @@
 .read-the-docs {
   color: #888;
 }
-/* Mobile-first defaults */
-#root {
-  width: 100%; /* Take full width on small screens */
-  padding: 1rem; /* Smaller padding for mobile */
-  margin: 0 auto; /* Still center, but now it's a 100% width container */
-  text-align: left; /* Default text to left-align for readability */
-}
 
-/* Specific adjustments for larger screens (e.g., tablets and desktops) */
-@media (min-width: 768px) {
-  #root {
-    max-width: 1280px; /* Apply max-width only on larger screens */
-    padding: 2rem; /* Restore larger padding for desktop */
-    text-align: center; /* Optionally center global content on desktop */
-  }
-}
 
