@@ -31,7 +31,7 @@ const HomePageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center; /* Centers content horizontally within this section for mobile */
-  padding: 40px 20px; /* Horizontal padding re-applied directly to this section for mobile */
+  padding: 40px 30px; /* Horizontal padding re-applied directly to this section for mobile */
   background: linear-gradient(to right,rgba(229, 167, 225, 0.29),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
   position: relative;
   overflow: hidden; /* Ensures any overflowing decorative elements within this container are clipped */
@@ -55,7 +55,7 @@ const HomePageContainer = styled.section`
 `;
 
 const ContentWrapper = styled.div`
-  flex: 1; /* Allows this content block to grow and shrink */
+  flex: 2; /* Allows this content block to grow and shrink */
   max-width: 400px; /* Keep a max-width for readability of text */
   text-align: center; /* Center text on mobile */
   z-index: 2; /* Ensure content is above decorative elements */
@@ -67,6 +67,10 @@ const ContentWrapper = styled.div`
 
   @media (min-width: 1024px) { /* Adjust max-width for larger screens if needed */
     max-width: 50%; /* Allow it to take up to 50% of parent's width */
+  }
+    @media (max-width: 480px) {
+    padding: 0px 20px; /* Adjusted padding for very small screens (mobile) */
+    min-width: 400px;
   }
 `;
 
@@ -80,6 +84,11 @@ const Heading = styled.h1`
   @media (max-width: 768px) {
     font-size: 32px; /* Smaller font on mobile */
   }
+    @media (max-width: 480px) {
+     font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
 `;
 
 const Description = styled.p`
@@ -90,6 +99,12 @@ const Description = styled.p`
 
   @media (max-width: 768px) {
     font-size: 16px; /* Smaller font on mobile */
+  }
+
+    @media (max-width: 480px) {
+     font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
   }
 `;
 
