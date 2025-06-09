@@ -5,7 +5,7 @@ import healix_logo from '../assets/healix_logo.svg'; // Assuming this is now jus
 // New Container to prevent damage on zoom and control overall layout
 const PageWrapper = styled.div`
     width: 100%; /* Take full width of its parent */
-    max-width: 1400px; /* Adjust this max-width as per your overall page layout */
+    max-width: 1200px; /* Adjust this max-width as per your overall page layout */
     margin: 0 auto; /* Center the wrapper on the page */
     box-sizing: border-box; /* Ensures padding doesn't add to the total width */
 `;

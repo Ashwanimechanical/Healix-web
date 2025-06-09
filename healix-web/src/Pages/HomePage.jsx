@@ -16,22 +16,24 @@ const AppWrapper = styled.div`
 `;
 
 const MainContainer = styled.div`
-  max-width: 1400px; /* This controls the overall maximum width of your page content */
+  max-width: 1200px; /* This controls the overall maximum width of your page content */
   margin: 0 auto; /* Centers the entire page content horizontally */
-  padding: 0; /* Important: MainContainer itself has NO horizontal padding, its children will */
-  box-sizing: border-box; /* Ensures padding is included in the total width if applied elsewhere */
+  padding: 0 ; /* Important: MainContainer itself has NO horizontal padding, its children will */
+  box-sizing: border-box; 
+  min-width: 500px;
+  
 `;
 
 const HomePageContainer = styled.section`
   display: flex;
-  flex-direction: column; /* Default to column on mobile */
-  align-items: center; /* Center content horizontally within this section */
-  padding: 40px 20px; /* Default horizontal padding for mobile */
-  background: linear-gradient(to right, rgba(229, 167, 225, 0.29), rgba(187, 212, 191, 0.43), rgba(214, 206, 144, 0.58), rgba(147, 182, 213, 0.58));
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally within this section for mobile */
+  padding: 40px 20px; /* Horizontal padding re-applied directly to this section for mobile */
+  background: linear-gradient(to right,rgba(229, 167, 225, 0.29),rgba(187, 212, 191, 0.43),rgba(214, 206, 144, 0.58),rgba(147, 182, 213, 0.58));
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  box-sizing: border-box;
+  overflow: hidden; /* Ensures any overflowing decorative elements within this container are clipped */
+  width: 100%; /* Ensures this section takes full width of its parent (MainContainer) */
+  box-sizing: border-box; /* Ensures padding is included in the total width */
 
   @media (min-width: 768px) {
     flex-direction: row; /* Layout as row on desktop */
@@ -45,23 +47,23 @@ const HomePageContainer = styled.section`
 
   @media (max-width: 480px) {
     padding: 40px 20px; /* Adjusted padding for very small screens (mobile) */
+    
   }
 `;
 
 const ContentWrapper = styled.div`
-  flex: 1;
-  max-width: 600px;
+  flex: 1; /* Allows this content block to grow and shrink */
+  max-width: 600px; /* Keep a max-width for readability of text */
   text-align: center; /* Center text on mobile */
-  z-index: 2;
-  width: 100%; /* Ensure it takes full width up to max-width */
+  z-index: 2; /* Ensure content is above decorative elements */
 
   @media (min-width: 768px) {
     text-align: left; /* Align text left on desktop */
-    margin-right: 40px;
+    margin-right: 40px; /* Provides a gap between text and image on desktop */
   }
 
-  @media (min-width: 1024px) {
-    max-width: 50%;
+  @media (min-width: 1024px) { /* Adjust max-width for larger screens if needed */
+    max-width: 50%; /* Allow it to take up to 50% of parent's width */
   }
 `;
 
@@ -73,7 +75,7 @@ const Heading = styled.h1`
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
-    font-size: 32px;
+    font-size: 32px; /* Smaller font on mobile */
   }
 `;
 
@@ -84,20 +86,14 @@ const Description = styled.p`
   line-height: 1.6;
 
   @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 16px; /* Smaller font on mobile */
   }
 `;
 
 const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: column; /* Stack buttons on very small screens */
   justify-content: center; /* Center buttons on mobile */
   gap: 16px;
-  width: 100%; /* Ensure buttons container takes full width */
-
-  @media (min-width: 480px) { /* Adjust breakpoint for horizontal buttons */
-    flex-direction: row; /* Row layout for buttons on wider mobile screens */
-  }
 
   @media (min-width: 768px) {
     justify-content: flex-start; /* Align buttons left on desktop */
@@ -112,11 +108,6 @@ const Button = styled.button`
   cursor: pointer;
   transition: 0.3s ease;
   border: none;
-  width: 100%; /* Make buttons full width on small screens */
-
-  @media (min-width: 480px) {
-    width: auto; /* Revert to auto width on wider screens */
-  }
 
   &:hover {
     opacity: 0.9;
@@ -128,16 +119,12 @@ const PrimaryButton = styled(Button)`
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content within button */
   gap: 8px;
 `;
 
 const SecondaryButton = styled(Button)`
   background-color: #f0f0f0;
   color: #333;
-  display: flex; /* Ensure secondary button also uses flex for alignment */
-  align-items: center;
-  justify-content: center;
 `;
 
 const Icon = styled.span`
@@ -145,27 +132,27 @@ const Icon = styled.span`
 `;
 
 const ImageWrapper = styled.div`
-  flex: 1;
+  flex: 1; /* Allows this image block to grow and shrink */
   position: relative;
-  max-width: 500px;
-  width: 100%; /* Ensure it takes full width up to max-width */
+  max-width: 500px; /* Keep a max-width for the image container */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 40px; /* Add margin on top for mobile when stacked */
 
   @media (min-width: 768px) {
-    margin-top: 0;
+    margin-top: 0; /* Remove margin on desktop */
   }
 
-  @media (min-width: 1024px) {
-    max-width: 50%;
+  @media (min-width: 1024px) { /* Adjust max-width for larger screens if needed */
+    max-width: 50%; /* Allow it to take up to 50% of parent's width */
   }
 `;
 
 const EllipseImage = styled.img`
   width: 100%;
-  max-width: 400px;
+  max-width: 400px; /* Max width for the ellipse itself */
   z-index: 1;
 `;
 
@@ -189,7 +176,7 @@ const DecorativeCircle = styled.div`
   height: 80px;
   border: 3px solid #333;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 3; /* Ensure it's on top of doctors image */
 
   @media (max-width: 768px) {
     width: 60px;
@@ -201,9 +188,9 @@ const DecorativeCircle = styled.div`
 
 const Star = styled.div`
   position: absolute;
-  background-color: rgb(12, 12, 12);
+  background-color:rgb(12, 12, 12);
   transform: rotate(45deg);
-  z-index: 3;
+  z-index: 3; /* Ensure it's on top of doctors image */
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
   top: ${(props) => props.top};
@@ -215,7 +202,7 @@ const Star = styled.div`
   &::after {
     content: '';
     position: absolute;
-    background-color: rgb(9, 9, 9);
+    background-color:rgb(9, 9, 9);
     width: 100%;
     height: 100%;
   }
@@ -232,225 +219,225 @@ const Star = styled.div`
 // === Styled Components for "Who We Are" Section ===
 
 const WhoWeAreSectionContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 20px; /* Default horizontal padding for mobile */
-  background-color: #fff;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all direct children horizontally */
+    padding: 80px 80px; /* Horizontal padding re-applied directly to this section for desktop */
+    background-color: #fff; /* White background as per the image */
+    text-align: center; /* Default center text for headings on mobile */
+    width: 100%; /* Ensures this section takes full width of its parent (MainContainer) */
+    box-sizing: border-box; /* Ensures padding is included in the total width */
 
-  @media (min-width: 768px) {
-    padding: 100px 80px; /* Desktop padding */
-  }
 
-  @media (max-width: 1024px) {
-    padding: 80px 50px; /* Adjusted padding for larger tablets/laptops */
-  }
+    @media (max-width: 1024px) {
+        padding: 80px 50px;
+    }
 
-  @media (max-width: 480px) {
-    padding: 60px 20px; /* Adjusted padding for very small screens (mobile) */
-  }
+    @media (min-width: 768px) {
+        padding: 100px 30px; /* Adjusted padding for smaller screens (tablet) */
+    }
+
+    @media (max-width: 480px) {
+        padding: 80px 20px; /* Adjusted padding for very small screens (mobile) */
+    }
 `;
 
 const SectionHeading = styled.h2`
-  font-size: 46px;
-  font-weight: 700;
-  color: #000000;
-  margin-bottom: 10px; /* Add some space below heading */
-  text-align: center;
-  width: 100%;
+    font-size: 46px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0px;
+    text-align: center; /* Center on mobile and desktop */
+    width: 100%; /* Take full width to allow proper centering */
 
-  @media (max-width: 768px) {
-    font-size: 32px;
-  }
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
 `;
 
 const SectionSubheading = styled.p`
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 40px; /* Increased margin for better separation */
-  text-align: center;
-  width: 100%;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 18px;
+    color: #666;
     margin-bottom: 30px;
-  }
+    text-align: center; /* Center on mobile and desktop */
+    width: 100%; /* Take full width to allow proper centering */
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
 `;
 
 const ContentBlock = styled.div`
-  display: flex;
-  flex-direction: column; /* Stack vertically on mobile */
-  gap: 40px;
-  max-width: 1200px;
-  width: 100%;
-  align-items: center; /* Center content within this block on mobile */
+    display: flex;
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 40px; /* Space between image and text on mobile */
+    max-width: 1200px; /* Max width for the content block (internal content max-width) */
+    width: 100%; /* Allows it to take full width up to max-width */
+    align-items: center; /* Center content within this block on mobile */
 
-  @media (min-width: 768px) {
-    flex-direction: row; /* Arrange horizontally on desktop */
-    gap: 80px;
-    align-items: flex-start; /* Align items to the top on desktop */
-  }
+    @media (min-width: 768px) {
+        flex-direction: row; /* Arrange horizontally on desktop */
+        gap: 80px; /* Space between image and text on desktop */
+        align-items: flex-start; /* Align items to the top on desktop */
+    }
 `;
 
 const ImageContainer = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center; /* Center image horizontally on mobile */
-  width: 100%; /* Ensure it takes full width to respect padding */
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center image horizontally on mobile */
+    align-items: center; /* Center image vertically if container allows */
 
-  @media (min-width: 768px) {
-    justify-content: flex-start; /* Align image to start on desktop */
-  }
+    @media (min-width: 768px) {
+        justify-content: flex-start; /* Align image to start on desktop */
+        align-items: flex-start; /* Align image to top on desktop */
+    }
 `;
 
 const TeamImage = styled.img`
-  width: 100%;
-  max-width: 500px; /* Limit image size */
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
+    width: 100%;
+    max-width: 500px; /* Limit image size */
+    height: auto;
+    border-radius: 12px; /* Slightly rounded corners for the image */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    object-fit: cover;
 `;
 
 const TextContent = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center text content horizontally on mobile */
-  width: 100%; /* Ensure text content takes full width */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text content horizontally on mobile */
 
-  @media (min-width: 768px) {
-    align-items: flex-start; /* Align text left on desktop */
-  }
+    @media (min-width: 768px) {
+        align-items: flex-start; /* Align text left on desktop */
+    }
 `;
 
 const DescriptionParagraph = styled.p`
-  font-size: 16px;
-  color: #444;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  text-align: center; /* Center text on mobile */
-  width: 100%; /* Ensure paragraph takes full width */
+    font-size: 16px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: center; /* Center text on mobile */
 
-  @media (min-width: 768px) {
-    text-align: left; /* Align text left on desktop */
-  }
+    @media (min-width: 768px) {
+        text-align: left; /* Align text left on desktop */
+    }
 `;
 
 const SubHeading = styled.h3`
-  font-size: 20px;
-  font-weight: 600;
-  color: #000000;
-  margin-top: 0px;
-  margin-bottom: 5px;
-  text-align: center; /* Center text on mobile */
-  width: 100%; /* Ensure subheading takes full width */
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: center; /* Center text on mobile */
 
-  @media (min-width: 768px) {
-    text-align: left; /* Align text left on desktop */
-  }
+    @media (min-width: 768px) {
+        text-align: left; /* Align text left on desktop */
+    }
 `;
 
 const SubText = styled.p`
-  font-size: 16px;
-  color: #444;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  text-align: center; /* Center text on mobile */
-  width: 100%; /* Ensure subtext takes full width */
+    font-size: 16px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: center; /* Center text on mobile */
 
-  @media (min-width: 768px) {
-    text-align: left; /* Align text left on desktop */
-  }
+    @media (min-width: 768px) {
+        text-align: left; /* Align text left on desktop */
+    }
 `;
 
 // Reusing Button styles from the hero section for consistency
 const SectionPrimaryButton = styled(PrimaryButton)`
-  margin-top: 20px; /* Space above the button */
+    margin-top: 20px; /* Space above the button */
 `;
+
 
 // === Component ===
 
 const HomePage = () => {
   return (
     <AppWrapper>
-      <MainContainer>
-        <HomePageContainer>
-          <ContentWrapper>
-            <Heading>
-              Empowering Healthcare<br />
-              Through Smart<br />
-              Marketing & Tech<br />
-              Solutions
-            </Heading>
-            <Description>
-              Your all-in-one partner for hospital marketing, digital transformation,<br />
-              staffing, and medical hardware solutions.
-            </Description>
-            <ButtonsContainer>
-              <PrimaryButton>
-                <Icon>⚡</Icon> Get Started
-              </PrimaryButton>
-              <SecondaryButton>How it works</SecondaryButton>
-            </ButtonsContainer>
-          </ContentWrapper>
+    <MainContainer> {/* This MainContainer wraps ALL your main page content */}
+      <HomePageContainer>
+        <ContentWrapper>
+          <Heading>
+            Empowering Healthcare<br />
+            Through Smart<br />
+            Marketing & Tech<br />
+            Solutions
+          </Heading>
+          <Description>
+            Your all-in-one partner for hospital marketing, digital transformation,<br />
+            staffing, and medical hardware solutions.
+          </Description>
+          <ButtonsContainer>
+            <PrimaryButton>
+              <Icon>⚡</Icon> Get Started
+            </PrimaryButton>
+            <SecondaryButton>How it works</SecondaryButton>
+          </ButtonsContainer>
+        </ContentWrapper>
 
-          <ImageWrapper>
-            <EllipseImage src={Ellipse} alt="Decorative Ellipse" />
-            {/* Doctors Image is now uncommented and using the placeholder */}
-            {/* <DoctorsImage src={doctorsImage} alt="Doctors" /> Added doctorsImage */}
-            <DecorativeCircle />
-            <Star size={20} bottom="10%" left="15%" />
-            <Star size={15} top="15%" right="-2%" />
-          </ImageWrapper>
-        </HomePageContainer>
+        <ImageWrapper>
+          <EllipseImage src={Ellipse} alt="Decorative Ellipse" />
+          {/* Doctors Image is now uncommented and using the placeholder */}
+          {/* <DoctorsImage src={doctorsImage} alt="Doctors" /> Added doctorsImage */}
+          <DecorativeCircle />
+          <Star size={20} bottom="10%" left="15%" />
+          <Star size={15} top="15%" right="-2%" />
+        </ImageWrapper>
+      </HomePageContainer>
 
-        <WhoWeAreSectionContainer>
+      {/* The "Who We Are" section is now a separate, sibling component */}
+      <WhoWeAreSectionContainer>
           <SectionHeading>Who We Are?</SectionHeading>
           <SectionSubheading>a full-service healthcare marketing and solutions agency.</SectionSubheading>
 
           <ContentBlock>
-            <ImageContainer>
-              <TeamImage src={teamPhoto} alt="Our Team" />
-            </ImageContainer>
-            <TextContent>
-              <DescriptionParagraph>
-                At Healix, we specialize in transforming healthcare institutions
-                into powerful, patient-centric brands. With over a decade of
-                expertise, our team blends healthcare knowledge with
-                modern marketing, technology, and operational support. We
-                are not just marketers—we're your strategic growth partners.
-              </DescriptionParagraph>
+              <ImageContainer>
+                  <TeamImage src={teamPhoto} alt="Our Team" />
+              </ImageContainer>
+              <TextContent>
+                  <DescriptionParagraph>
+                      At Healix, we specialize in transforming healthcare institutions
+                      into powerful, patient-centric brands. With over a decade of
+                      expertise, our team blends healthcare knowledge with
+                      modern marketing, technology, and operational support. We
+                      are not just marketers—we're your strategic growth partners.
+                  </DescriptionParagraph>
 
-              <SubHeading>Mission:</SubHeading>
-              <SubText>
-                To deliver measurable growth and enhanced patient
-                experiences through tailored marketing, digital tools, and
-                clinical staffing support.
-              </SubText>
+                  <SubHeading>Mission:</SubHeading>
+                  <SubText>
+                      To deliver measurable growth and enhanced patient
+                      experiences through tailored marketing, digital tools, and
+                      clinical staffing support.
+                  </SubText>
 
-              <SubHeading>Vision:</SubHeading>
-              <SubText>
-                To be the most trusted healthcare marketing and support
-                agency, redefining success for hospitals and clinics across
-                the country.
-              </SubText>
+                  <SubHeading>Vision:</SubHeading>
+                  <SubText>
+                      To be the most trusted healthcare marketing and support
+                      agency, redefining success for hospitals and clinics across
+                      the country.
+                  </SubText>
 
-              <SectionPrimaryButton>
-                Get Started &rarr; {/* Arrow icon */}
-              </SectionPrimaryButton>
-            </TextContent>
+                  <SectionPrimaryButton>
+                      Get Started &rarr; {/* Arrow icon */}
+                  </SectionPrimaryButton>
+              </TextContent>
           </ContentBlock>
-        </WhoWeAreSectionContainer>
-        {/* Other HomePage sections */}
-        <HomePageTwo />
-        <HomePageThree />
-        <HomePageFour />
-        <HomePageFive />
-      </MainContainer>
+      </WhoWeAreSectionContainer>
+      {/* Other HomePage sections */}
+      <HomePageTwo />
+      <HomePageThree />
+      <HomePageFour />
+      <HomePageFive />
+    </MainContainer>
     </AppWrapper>
   );
 };

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // Reusing the PageWrapper from the header to ensure consistent max-width and centering
 const PageWrapper = styled.div`
     width: 100%; /* Take full width of its parent */
-    max-width: 1400px; /* Adjust this max-width as per your overall page layout (should match header's) */
+    max-width: 1200px; /* Adjust this max-width as per your overall page layout (should match header's) */
     margin: 0 auto; /* Center the wrapper on the page */
     box-sizing: border-box; /* Ensures padding doesn't add to the total width */
 
