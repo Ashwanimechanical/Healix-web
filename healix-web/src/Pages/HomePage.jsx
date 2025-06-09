@@ -20,10 +20,10 @@ const MainContainer = styled.div`
   margin: 0 auto; /* Centers the entire page content horizontally */
   padding: 0 ; /* Important: MainContainer itself has NO horizontal padding, its children will */
   box-sizing: border-box; 
-  min-width: 500px;
+  min-width: 400px;
   
    @media (max-width: 480px) {
-   min-width: 500px;
+   min-width: 400px;
     padding: 0px 20px; /* Adjusted padding for very small screens (mobile) */
 `;
 
@@ -49,8 +49,8 @@ const HomePageContainer = styled.section`
   }
 
   @media (max-width: 480px) {
-    padding: 40px 20px; /* Adjusted padding for very small screens (mobile) */
-    
+    padding: 0px 20px; /* Adjusted padding for very small screens (mobile) */
+    min-width: 400px;
   }
 `;
 
